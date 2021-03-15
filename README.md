@@ -1,3 +1,5 @@
 lazy
-fir auth
+firebase auth
+fieldvalue firebase
 useHistory
+Suspense
