@@ -6,6 +6,5 @@ export const doesUsernameExist = async (username) => {
     .collection('users')
     .where('username', '==', username)
     .get()
-  const res = users.docs.map((user) => user.data())
-  return res.length > 0
+  return users.docs.map((user) => user.data()).length > 0
 }
