@@ -1,7 +1,7 @@
 import { createContext } from 'react'
 import { firebase, FieldValue } from '../lib'
 
-const FirebaseContext = createContext(null)
+const FirebaseContext = createContext()
 
 const FirebaseProvider = ({ children }) => {
   const values = { firebase, FieldValue }

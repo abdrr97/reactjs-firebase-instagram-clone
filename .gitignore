@@ -10,7 +10,8 @@
 
 # production
 /build
-seed-for-dev.js
+src/seed.js
+/src/lib/index.js
 # misc
 .DS_Store
 .env.local
