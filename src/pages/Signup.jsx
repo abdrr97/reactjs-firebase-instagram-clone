@@ -1,12 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import { Link } from 'react-router-dom'
-import { FirebaseContext } from '../context'
-import * as ROUTES from '../constants/routes'
+import { useFirebaseContext } from '../context/firebase'
 import { doesUsernameExist } from '../services/firebase'
+import * as ROUTES from '../constants/routes'
+
 const Signup = () => {
   const history = useHistory()
-  const { firebase } = useContext(FirebaseContext)
+  const { firebase } = useFirebaseContext()
 
   const [emailAddress, setEmailAddress] = useState('')
   const [password, setPassword] = useState('')
@@ -28,7 +29,7 @@ const Signup = () => {
           .createUserWithEmailAndPassword(emailAddress, password)
 
         await createdUserResult.user.updateProfile({
-          displyName: username,
+          displayName: username,
         })
         await firebase.firestore().collection('users').add({
           userId: createdUserResult.user.uid,

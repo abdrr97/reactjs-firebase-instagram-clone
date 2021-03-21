@@ -1,11 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import { Link } from 'react-router-dom'
-import { FirebaseContext } from '../context'
+import { useFirebaseContext } from '../context/firebase'
 import * as ROUTES from '../constants/routes'
+
 const Login = () => {
   const history = useHistory()
-  const { firebase } = useContext(FirebaseContext)
+  const { firebase } = useFirebaseContext()
 
   const [emailAddress, setEmailAddress] = useState('')
   const [password, setPassword] = useState('')

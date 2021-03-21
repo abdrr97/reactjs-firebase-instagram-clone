@@ -1,11 +1,14 @@
-import { createContext } from 'react'
-import { firebase, FieldValue } from '../lib'
+import { createContext, useContext } from 'react'
+import useAuthListener from '../hooks/useAuthListener'
+const UserContext = createContext()
 
-const FirebaseContext = createContext()
-
-const FirebaseProvider = ({ children }) => {
-  const values = { firebase, FieldValue }
-  return <FirebaseContext.Provider value={values} children={children} />
+const UserProvider = ({ children }) => {
+  const { user } = useAuthListener()
+  return <UserContext.Provider value={{ user }} children={children} />
 }
 
-export { FirebaseContext, FirebaseProvider }
+const useUserContext = () => {
+  return useContext(UserContext)
+}
+
+export { UserContext, UserProvider, useUserContext }
