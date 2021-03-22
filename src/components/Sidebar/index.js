@@ -7,12 +7,13 @@ const Sidebar = () => {
   const {
     user: { fullName, username, userId },
   } = useUser()
-  console.log(fullName, username, userId)
+  const user = { fullName, username, userId }
 
   return (
     <div className='p-4'>
-      <User />
-      <Suggestions />
+      <User {...user} />
+      <User {...user} />
+      <Suggestions {...user} />
     </div>
   )
 }
