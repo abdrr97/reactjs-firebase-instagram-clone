@@ -16,7 +16,6 @@ const Login = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault()
-    console.log('dde')
     try {
       await firebase.auth().signInWithEmailAndPassword(emailAddress, password)
       history.push(ROUTES.DASHBOARD)
@@ -67,6 +66,9 @@ const Login = () => {
               className='text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2'
               onChange={({ target }) => setPassword(target.value)}
               value={password}
+              onKeyDown={(e) => {
+                e.key === 'Enter' && handleLogin(e)
+              }}
             />
             <button
               disabled={isInvalid}
